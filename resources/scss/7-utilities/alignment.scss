@@ -1,18 +1,35 @@
 .align {
 
-    &left {
+    &-left {
         float: left;
     }
 
-    &right {
+    &-right {
         float: right;
     }
 
-    &wide {
+    &-wide {
         @extend %container--wide;
     }
 
-    &full {
+    &-full {
         @extend %container--full;
+    }
+
+    &__text{
+        &--center,
+        .has-style-text-align-center {
+            @extend %text-align-center;
+        }
+
+        &--left,
+        .has-style-text-align-left {
+            @extend %text-align-left;
+        }
+
+        &--right,
+        .has-style-text-align-right{
+            @extend %text-align-right;
+        }
     }
 }
