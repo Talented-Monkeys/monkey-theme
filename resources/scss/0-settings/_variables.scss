@@ -1,0 +1,18 @@
+/**
+** SCSS Variables
+** ------------------------------------------------------------------------------
+** Defining scss variables
+** usage: `$vriableName: <value>;`
+** ------------------------------------------------------------------------------
+**/
+
+
+$mq-mobile: 36em;
+$mq-tablet: 48em;
+$mq-desktop: 62em;
+$mq-wide: 75em;
+$global-container-padding: 1.25em;
+
+$fontWeightLight: 300;
+$fontWeightRegular: 400;
+$fontWeightBold: 700;

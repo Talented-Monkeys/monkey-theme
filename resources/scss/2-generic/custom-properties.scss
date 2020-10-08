@@ -5,22 +5,22 @@
  * usage: `color: var(--color-primary);`
  */
 
-// SCSS variables
-$mq-mobile: 36em;
-$mq-tablet: 48em;
-$mq-desktop: 62em;
-$mq-wide: 75em;
-$global-container-padding: 1.25em;
-
 :root {
 	// Global paddings
 	--container-padding: #{$global-container-padding};
     // Font stacks
+	--font__weight--light: #{$fontWeightLight};
+	--font__weight--regular: #{$fontWeightRegular};
+	--font__weight--bold: #{$fontWeightBold};
     --font__copy: sans-serif;
-	--font__copy--weight: 300;
-	--font__copy--size: 1em;
-	--font__copy--line-height: 1.5;
+	--font__copy--weight: var(--font__weight--regular);
+	--font__copy--size: 1.125rem;
+	--font__copy--line-height: 1.2;
     --font__heading: sans-serif;
+	--font__heading--size-basis: 2.625rem;
+	--font__heading--size: var(--font__heading--size-basis);
+	--font__heading--line-height: 1.2;
+	--font__heading--weight: var(--font__weight--light);
     // Color by name
     --color__black: #000;
     --color__white: #fff;
@@ -47,6 +47,7 @@ $global-container-padding: 1.25em;
     --color__success--light: var(--color__green--light);
     --color__notice: var(--color__blue);
     --color__notice--light: var(--color__blue--light);
+    --color__background--body: var(--color__white);
     // Media Queries
     --mq__mobile: #{$mq-mobile};
     --mq__tablet: #{$mq-tablet};
@@ -57,5 +58,5 @@ $global-container-padding: 1.25em;
     --animation__timing-function: ease-in-out;
     // Misc
     --adminbar__height--narrow: 32px;
-    --adminbar__height: 46px; 
+    --adminbar__height: 46px;
 }
