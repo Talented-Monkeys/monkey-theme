@@ -1,13 +1,23 @@
 /**
- * Copy text styles
- *
- * Define global copy text styles
- */
+** ------------------------------------------------------------------------------
+** Copy text styles
+** ------------------------------------------------------------------------------
+** Define global copy text styles
+** ------------------------------------------------------------------------------
+**/
 %copy {
+    font-family: var(--font__copy);
+    font-weight: var(--font__copy--weight);
+    font-size: var(--font__copy--size);
+    line-height: var(--font__copy--line-height);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 %copy--large {
+    font-size: calc( var(--font__copy--size) * 1.15);
 }
 
 %copy--small {
+    font-size: calc( var(--font__copy--size) * 0.9);
 }
