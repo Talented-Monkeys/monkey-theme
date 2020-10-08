@@ -1,23 +1,45 @@
 /**
- * <h>
- */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-family: var(--font__heading);
-}
+** <h1>, <h2>, <h3>, <h4>, <h5>, <h6>
+**/
 
-h1 {
-    @extend %heading--primary !optional;
-}
+ h1,
+ h2,
+ h3,
+ h5,
+ h5,
+ h6 {
+     font-family: var(--font__heading);
+     font-weight: var(--font__heading--weight);
+     font-size: var(--font__heading--size);
+     line-height: var(--font__heading--line-height);
+ }
 
-h2 {
-    @extend %heading--secondary !optional;
-}
+ h1,
+ .has-style-h1 {
+     @extend %heading--level-1 !optional;
+ }
 
-h3 {
-    @extend %heading--teritary !optional;
-}
+ h2,
+ .has-style-h2  {
+     @extend %heading--level-2 !optional;
+ }
+
+ h3 ,
+ .has-style-h3 {
+     @extend %heading--level-3 !optional;
+ }
+
+ h4 ,
+ .has-style-h4 {
+     @extend %heading--level-4 !optional;
+ }
+
+ h5 ,
+ .has-style-h5 {
+     @extend %heading--level-5 !optional;
+ }
+
+ h6 ,
+ .has-style-h6 {
+     @extend %heading--level-6 !optional;
+ }

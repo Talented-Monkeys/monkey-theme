@@ -1,14 +1,30 @@
 /**
- * Heading styles
- *
- * Define global heading styles for reusage in components
- */
+** Heading styles
+** ------------------------------------------------------------------------------
+** Define global heading styles for reusage in components
+** ------------------------------------------------------------------------------
+**/
 
-%heading--primary {
+ %heading--level-1 {
+	font-size: var(--font__heading--size);
 }
 
-%heading--secondary {
+%heading--level-2 {
+	font-size: calc( var(--font__heading--size) * 0.8);
 }
 
-%heading--tertiary {
+%heading--level-3 {
+	font-size: calc( var(--font__heading--size) * 0.7);
+}
+
+%heading--level-4 {
+	font-size: calc( var(--font__heading--size) * 0.6);
+}
+
+%heading--level-5 {
+	font-size: calc( var(--font__heading--size) * 0.55);
+}
+
+%heading--level-6{
+	font-size: calc( var(--font__heading--size) * 0.5);
 }
