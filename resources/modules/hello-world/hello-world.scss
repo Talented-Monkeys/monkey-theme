@@ -1,0 +1,21 @@
+/**
+** ------------------------------------------------------------------------------
+** Hello world module example
+** ------------------------------------------------------------------------------
+** This is an example of an default module
+** ------------------------------------------------------------------------------
+**/
+
+// Importing scss dependencies
+@import "../../scss/0-settings/*.scss";
+@import "../../scss/1-tools/*.scss";
+
+:root{
+    // Module custom properties
+}
+
+.hello-world-module{
+    &__inner-container{
+
+    }
+}

@@ -1,1 +1,5 @@
-<h1><?= sprintf(__('This is the 1%', 'monkey-theme'), $moduleName); ?></h1>
+<section class="hello-world-module">
+    <div class="hello-world-module__inner-container">
+        <h1>hello-world</h1>
+    </div>
+</section>
