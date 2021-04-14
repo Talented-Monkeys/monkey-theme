@@ -19,3 +19,36 @@
         text-align: center;
     }
 }
+
+// Margins
+%margin{
+    &-no{
+        margin: 0;
+
+        &-top{
+            margin-top: 0;
+        }
+
+        &-right{
+            margin-right: 0;
+        }
+
+        &-bottom{
+            margin-bottom: 0;
+        }
+
+        &-left{
+            margin-left: 0;
+        }
+
+        &-horizontal{
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        &-vertical{
+            margin-right: 0;
+            margin-left: 0;
+        }
+    }
+}

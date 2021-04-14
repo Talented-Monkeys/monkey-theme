@@ -26,7 +26,7 @@ use \RalfHortt\TemplateLoader\TemplateLocator;
 
 $autoloader = __DIR__ . '/vendor/autoload.php';
 
-if (is_readable($autoloader)) : 
+if (is_readable($autoloader)) :
     include $autoloader;
 endif;
 
@@ -70,7 +70,7 @@ add_action('after_setup_theme', function () {
     (new Script('theme', get_template_directory_uri() . '/dist/js/app.js', ['jquery'], true, true))->register();
     (new Style('sanitize-css', get_template_directory_uri() . '/dist/vendor/sanitize-css/sanitize.css'))->register();
     (new Style('theme', get_template_directory_uri() . '/dist/css/app.css', ['sanitize-css']))->register();
-    
+
     add_editor_style('dist/css/editor-styles.css');
 
 
@@ -103,7 +103,7 @@ add_action('after_setup_theme', function () {
      * Remove obsolete wordpress stuff with "remove_action"
      * ------------------------------------------------------------------------------
      */
-    include get_template_directory() . '/config/wordpress/remove-obsolete-wordpress-stuff.functions.php';  
+    include get_template_directory() . '/config/wordpress/remove-obsolete-wordpress-stuff.functions.php';
 
     /**
      * ------------------------------------------------------------------------------
@@ -112,13 +112,13 @@ add_action('after_setup_theme', function () {
      * @see https://github.com/Horttcore/wp-customizer
      * ------------------------------------------------------------------------------
      */
-    include get_template_directory() . '/config/wordpress/customizer.functions.php'; 
+    include get_template_directory() . '/config/wordpress/customizer.functions.php';
 
     /**
      * ------------------------------------------------------------------------------
      * Template loader
      * ------------------------------------------------------------------------------
-     */ 
+     */
     (new TemplateLocator('resources/views'))->register();
 });
 
@@ -126,7 +126,7 @@ add_action('after_setup_theme', function () {
 /*
 * Theme functions
 * Fixed settings
-*/ 
+*/
 
 // Enable SMTP mailing via external smtp server
 include get_template_directory() . '/config/wordpress/attachments-credits.functions.php';
@@ -134,18 +134,18 @@ include get_template_directory() . '/config/wordpress/attachments-credits.functi
 
 /*
 * Configurable settings
-*/ 
-if ((defined('WP_SMTP_HOST') && WP_SMTP_HOST != "localhost") && WP_SMTP_USERNAME && WP_SMTP_PASSWORD){ 
+*/
+if ((defined('WP_SMTP_HOST') && WP_SMTP_HOST != "localhost") && WP_SMTP_USERNAME && WP_SMTP_PASSWORD){
     // Enable SMTP mailing via external smtp server
 	include get_template_directory() . '/config/wordpress/mail-configuration.functions.php';
 }
 
-if ( defined('WP_COMMENTS') && WP_COMMENTS == false ){ 
+if ( defined('WP_COMMENTS') && WP_COMMENTS == false ){
     // Disable wordpress comment to avoid spam
 	include get_template_directory() . '/config/wordpress/comments-configuration.functions.php';
 }
 
-if ( defined('WP_BLOG') && WP_BLOG == false ){ 
+if ( defined('WP_BLOG') && WP_BLOG == false ){
     // Disable wordpress blog environment
 	include get_template_directory() . '/config/wordpress/blog-configuration.functions.php';
 }
@@ -155,24 +155,50 @@ if (defined('ACF_PRO_KEY') && ACF_PRO_KEY != '') {
     include get_template_directory() . '/config/wordpress/acf-pro-activation.functions.php';
 }
 /**
- * ------------------------------------------------------------------------------
- * Register custom post types
- * ------------------------------------------------------------------------------
- */
+** ------------------------------------------------------------------------------
+** Register custom post types
+** ------------------------------------------------------------------------------
+**/
+
 foreach (glob(get_template_directory() . '/config/custom-post-types/*.php') as $filename) {
-    include $filename;
-}
-/**
- * ------------------------------------------------------------------------------
- * Register modules
- * ------------------------------------------------------------------------------
- */
-foreach (glob(get_template_directory() . '/resources/modules/**/*.config.php') as $filename) {
     include $filename;
 }
 
 /**
- * ------------------------------------------------------------------------------
+** ------------------------------------------------------------------------------
+** Register modules
+** ------------------------------------------------------------------------------
+**/
+
+foreach (glob(get_template_directory() . '/resources/modules/**/*.config.php') as $filename) {
+    include $filename;
+}
+
+
+
+/**
+** ------------------------------------------------------------------------------
+** Register and synchronize acf fields
+** ------------------------------------------------------------------------------
+**/
+$register_acf_fields_source_directories = [
+    '/resources/modules/**',
+    '/config/custom-post-types'
+];
+
+foreach ($register_acf_fields_source_directories as $register_acf_fields_source_directory) {
+    foreach (glob(get_template_directory() . $register_acf_fields_source_directory . '/acf-json/*.json') as $filename) {
+        add_filter('acf/settings/load_json', function($paths) use ( $filename ){
+            $paths[] = pathinfo($filename)['dirname'];
+            return $paths;
+        }, 20);
+    }
+}
+
+
+
+/**
+** ------------------------------------------------------------------------------
  * Put project specific code in functions.custom.php
  * ------------------------------------------------------------------------------
  */

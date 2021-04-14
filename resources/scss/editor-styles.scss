@@ -1,14 +1,18 @@
 /**
- *
- * Editor stylesheet
- *
- * Editor styles should be added on a try and error basis 
- *
- */
-// @import "1-tools/*.scss";
-// @import "2-generic/*.scss";
-// @import "3-elements/*.scss";
-// @import "4-components/*.scss";
-// @import "5-blocks/*.scss";
-// @import "6-templates/*.scss";
-// @import "7-utilities/*.scss";
+** Editor stylesheet
+** ------------------------------------------------------------------------------
+** Add here the stylings to have a nice view in gutenberg
+** ------------------------------------------------------------------------------
+**/
+
+@import "0-settings/*.scss";
+@import "1-tools/*.scss";
+@import "2-generic/*.scss";
+
+.editor-styles-wrapper .block-editor__typewriter{
+    @import "3-elements/*.scss";
+    @import "4-components/*.scss";
+    @import "5-blocks/*.scss";
+    @import "6-templates/*.scss";
+    @import "7-utilities/*.scss";
+}
