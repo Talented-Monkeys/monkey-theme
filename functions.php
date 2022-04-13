@@ -15,6 +15,8 @@
  */
 use \RalfHortt\Assets\Script;
 use \RalfHortt\Assets\Style;
+use \RalfHortt\Assets\AdminStyle;
+use \RalfHortt\Assets\AdminScript;
 use \RalfHortt\ContentWidth\ContentWidth;
 use \RalfHortt\TemplateLoader\TemplateLocator;
 
@@ -57,7 +59,12 @@ add_action('after_setup_theme', function () {
      * @see https://codex.wordpress.org/Content_Width
      * ------------------------------------------------------------------------------
      */
-    (new ContentWidth(980))->register();
+    $contentWidth = 1440;
+    if( class_exists('ACF') ) {
+        $contentWidth = (get_field('hdw-theme-developer-setting__content-width', 'option') ? get_field('hdw-theme-developer-setting__content-width', 'option') : 980);
+    }
+
+    (new ContentWidth($contentWidth))->register();
 
 
     /**
@@ -71,7 +78,14 @@ add_action('after_setup_theme', function () {
     (new Style('sanitize-css', get_template_directory_uri() . '/dist/vendor/sanitize-css/sanitize.css'))->register();
     (new Style('theme', get_template_directory_uri() . '/dist/css/app.min.css', ['sanitize-css']))->register();
 
-    add_editor_style('dist/css/editor-styles.css');
+    //Embla Slider - uncomment the lines below to implement the slider and plugins
+    //(new Script('embla-slider', get_template_directory_uri() . '/dist/vendor/embla-carousel/packages/embla-carousel/embla-carousel.umd.js', ['jquery'], true, true))->register();
+    //(new Script('embla-slider-autoplay', get_template_directory_uri() . '/dist/vendor/embla-carousel/packages/embla-carousel-autoplay/embla-carousel-autoplay.umd.js', ['jquery'], true, true))->register();
+    //(new Script('embla-slider-class-names', get_template_directory_uri() . '/dist/vendor/embla-carousel/packages/embla-carousel-class-names/embla-carousel-class-names.umd.js', ['jquery'], true, true))->register();
+
+    //  add_editor_style('dist/css/editor-styles.css');
+
+    (new AdminStyle('editor-styles-admin', get_template_directory_uri() . '/dist/css/editor-styles.min.css', [], false, true))->register();
 
 
     /**
@@ -83,9 +97,9 @@ add_action('after_setup_theme', function () {
      */
     register_nav_menus(
         [
-            'meta' => __('Metamenü', 'TEXTDOMAIN'),
-            'main' => __('Hauptmenü', 'TEXTDOMAIN'),
-            'footer' => __('Footermenü', 'TEXTDOMAIN'),
+            'meta' => __('Meta navigation', 'TEXTDOMAIN'),
+            'main' => __('Main navigation', 'TEXTDOMAIN'),
+            'footer' => __('Footer navigation', 'TEXTDOMAIN'),
         ]
     );
 
@@ -131,6 +145,12 @@ add_action('after_setup_theme', function () {
 // Enable SMTP mailing via external smtp server
 include get_template_directory() . '/config/wordpress/attachments-credits.functions.php';
 
+// Enable some Wordpress security settings
+include get_template_directory() . '/config/wordpress/wordpress-security.functions.php';
+
+// Enable cache configuration to avoid caching on development & local environments
+include get_template_directory() . '/config/wordpress/cache-config.functions.php';
+
 
 /*
 * Configurable settings
@@ -154,6 +174,16 @@ if (defined('ACF_PRO_KEY') && ACF_PRO_KEY != '') {
     // Activate ACF Pro
     include get_template_directory() . '/config/wordpress/acf-pro-activation.functions.php';
 }
+
+/**
+ * ------------------------------------------------------------------------------
+ * Register theme configuration files
+ * ------------------------------------------------------------------------------
+ */
+foreach (glob(get_template_directory() . '/config/theme/*.php') as $filename) {
+    include $filename;
+}
+
 /**
  * ------------------------------------------------------------------------------
  * Register custom post types
@@ -162,12 +192,13 @@ if (defined('ACF_PRO_KEY') && ACF_PRO_KEY != '') {
 foreach (glob(get_template_directory() . '/config/custom-post-types/*.php') as $filename) {
     include $filename;
 }
+
 /**
  * ------------------------------------------------------------------------------
- * Register modules
+ * Register gutenberg configurations files
  * ------------------------------------------------------------------------------
  */
-foreach (glob(get_template_directory() . '/resources/modules/**/*.config.php') as $filename) {
+foreach (glob(get_template_directory() . '/config/gutenberg/*.php') as $filename) {
     include $filename;
 }
 

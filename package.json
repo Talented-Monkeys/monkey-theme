@@ -1,13 +1,13 @@
 {
-    "name": "monkey-theme",
-    "description": "A WordPress Boilerplate Theme by Talented Monkeys",
-    "version": "0.0.6",
-    "author": "Anthony Spross <anthony@talented-monkeys.com, Tobias Feld <tobias@talented-monkeys.com",
+    "name": "hdw-wordpress-theme",
+    "description": "A WordPress Boilerplate Theme by HDW",
+    "version": "0.0.7",
+    "author": "Anthony Spross <a.spross@hdw1.de, Tobias Feld <t.feld@hdw1.de",
     "license": "MIT",
-    "homepage": "https://monkey-theme.dev",
+    "homepage": "https://www.hdw.dev",
     "scripts": {
         "default": "cross-env gulp",
-        "dev": "cross-env gulp && cross-env bower install --allow-root",
+        "dev": "cross-env gulp build && cross-env bower install --allow-root && cross-env gulp watch",
         "watch": "cross-env gulp watch",
         "build": "cross-env gulp build && cross-env bower install --allow-root",
         "fonts": "cross-env gulp fonts",
@@ -18,7 +18,9 @@
         "php:lint": "cross-env ./vendor/bin/phpcs .",
         "php:fix": "cross-env phpcbf ./",
         "lint": "cross-env npm run css:styles && cross-env npm run js:lint",
-        "fix": "npm run css:fix && npm run js:fix"
+        "fix": "npm run css:fix && npm run js:fix",
+        "process-rename": "rename",
+        "process-replace": "rexreplace"
     },
     "devDependencies": {
         "@babel/preset-env": "^7.11.5",
@@ -44,7 +46,9 @@
         "postcss-easing-gradients": "^3.0.1",
         "stylelint": "^13.7.2",
         "stylelint-order": "^4.1.0",
-        "stylelint-scss": "^3.18.0"
+        "stylelint-scss": "^3.18.0",
+        "rename-cli": "^6.2.1",
+        "rexreplace": "^6.1.1"
     },
     "dependencies": {
         "gulp-htmlmin": "^5.0.1",

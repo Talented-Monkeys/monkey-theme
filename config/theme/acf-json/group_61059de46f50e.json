@@ -1,0 +1,193 @@
+{
+    "key": "group_61059de46f50e",
+    "title": "Theme Developer Settings",
+    "fields": [
+        {
+            "key": "field_6105a8f5da906",
+            "label": "Global Settings",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_611b5e6ee08f5",
+            "label": "Enable debug information",
+            "name": "hdw-theme-developer-setting__debug-info",
+            "type": "select",
+            "instructions": "Should debug informations be shown?",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "true": "Enabled",
+                "false": "Disabled",
+                "dev": "On local development"
+            },
+            "default_value": "false",
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_6105a90fda907",
+            "label": "Content width",
+            "name": "hdw-theme-developer-setting__content-width",
+            "type": "number",
+            "instructions": "This value overwrites the value set in the theme functions.php",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 1440,
+            "placeholder": "",
+            "prepend": "",
+            "append": "px",
+            "min": "",
+            "max": "",
+            "step": ""
+        },
+        {
+            "key": "field_61f54bcc0d836",
+            "label": "Enable remote images",
+            "name": "hdw-theme-developer-setting__remote-images",
+            "type": "true_false",
+            "instructions": "Should we load missing images from a remote server?",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "message": "load missing images from a remote server",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_61f54c080d837",
+            "label": "Remote images url",
+            "name": "hdw-theme-developer-setting__remote-images-url",
+            "type": "text",
+            "instructions": "Please define the remote server url (e.g.: https:\/\/theme.hdw.dev)",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_61f54bcc0d836",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_61059dee1e1ed",
+            "label": "Grid Overlay",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_610a540689e75",
+            "label": "Use the url parameter",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "100",
+                "class": "",
+                "id": ""
+            },
+            "message": "You could enable or disable the grid-overlay with an url parameter aswell, just add to the url: ?grid-overlay=true",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
+            "key": "field_61059f041e1f3",
+            "label": "Enable Grid Overlay",
+            "name": "hdw-theme-developer-setting__grid-overlay",
+            "type": "select",
+            "instructions": "Should the Grid Overlay be visible?",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "true": "Enabled",
+                "false": "Disabled",
+                "dev": "On local development"
+            },
+            "default_value": "false",
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "acf-options-development"
+            }
+        ]
+    ],
+    "menu_order": 10000,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "[OPTIONS] Theme configuration related to the development processes",
+    "show_in_rest": 0,
+    "modified": 1643466053
+}

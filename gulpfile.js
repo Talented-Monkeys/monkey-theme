@@ -62,9 +62,13 @@ function sync(done) {
         proxy: process.env.HOST,
         notify: false,
         files: [
-            `${path.css.dest}/app.css`,
-            `${path.js.dest}/app.js`,
-            `${path.img.dest}/**.*`
+            `${path.css.dest}/app.min.css`,
+            `${path.css.dest}/modules/**/*.min.css`,
+            `${path.js.dest}/modules/**/*.min.js`,
+            `${path.js.dest}/app.min.js`,
+            `${path.img.dest}/**.*`,
+            `${path.src}/modules/**/*.scss`,
+            `${path.src}/modules/**/*.js`
         ]
     });
 }
@@ -153,7 +157,7 @@ exports.js = js;
 
 function jsModule() {
     return gulp
-        .src(`${path.src}/modules/**/*.js`)
+        .src([`${path.src}/modules/**/*.js`,`!${path.src}/modules/**/node_modules/**/*.js`])
         .pipe(
             plugins.babel({
                 presets: ["@babel/preset-env"]
