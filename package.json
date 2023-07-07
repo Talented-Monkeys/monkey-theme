@@ -42,7 +42,7 @@
         "import-glob-loader": "^1.1.0",
         "postcss-custom-media": "^7.0.8",
         "postcss-easing-gradients": "^3.0.1",
-        "stylelint": "^13.7.2",
+        "stylelint": "^15.10.1",
         "stylelint-order": "^4.1.0",
         "stylelint-scss": "^3.18.0"
     },
